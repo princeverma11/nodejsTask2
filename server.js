@@ -1,6 +1,6 @@
 // server.js
 
-// Import necessary modules
+// here i am import necessary modules
 const express = require('express'); // Express is used for server creation
 const { MongoClient } = require('mongodb'); // MongoClient is used to interact with MongoDB
 require('dotenv').config(); // dotenv is used to load environment variables
@@ -8,7 +8,7 @@ require('dotenv').config(); // dotenv is used to load environment variables
 const app = express();
 const port = 3000;
 
-// Middleware to parse JSON bodies
+// thi is middleware to parse JSON bodies
 app.use(express.json());
 
 // MongoDB connection string and client
@@ -17,7 +17,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 let collection;
 
-// Connect to MongoDB and create the collection
+// here i am connecting to MongoDB and create the collection
 async function connectToDB() {
     try {
         await client.connect();
@@ -29,7 +29,7 @@ async function connectToDB() {
     }
 }
 
-// Route to insert multiple documents
+// thi si route to insert multiple documents
 app.post('/insert', async (req, res) => {
     try {
         const docs = req.body; // Get the documents from the request body
@@ -40,7 +40,7 @@ app.post('/insert', async (req, res) => {
     }
 });
 
-// Route to query documents
+// route to query documents
 app.get('/find', async (req, res) => {
     try {
         const query = req.query; // Get query parameters from request
@@ -73,7 +73,7 @@ app.delete('/delete', async (req, res) => {
     }
 });
 
-// Start the server after connecting to the database
+// here i am starting the server after connecting to the database
 app.listen(port, async () => {
     await connectToDB();
     console.log(`Server is running on http://localhost:${port}`);
